@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Recruitment Status Call – 13 Nov 2026</title>
+<style>
+:root{--bg:#eef1f5;--card:#fff;--ink:#14213d;--mut:#5b6679;--line:#d9dfe8;--acc:#0b6e6e;--warn:#c2410c;--amb:#b7791f;--soft:#e3f1f1;--hot:#fbe9e1;box-sizing:border-box}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1623;--card:#172234;--ink:#e8edf5;--mut:#9aa6ba;--line:#2a3850;--acc:#3fb7b0;--warn:#ff8a5c;--amb:#e5b45a;--soft:#12333a;--hot:#3a2219}}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#prog{position:fixed;top:0;left:0;height:5px;width:0;background:var(--acc);transition:width .5s ease;z-index:20;margin-top:env(safe-area-inset-top,0px)}
+.slide{position:absolute;inset:0;padding:clamp(28px,5vh,56px) clamp(20px,6vw,88px) 84px;overflow:auto;opacity:0;visibility:hidden;transform:translateX(60px);transition:opacity .55s ease,transform .55s ease,visibility 0s .55s}
+.slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .55s ease,transform .55s ease}
+.slide.past{transform:translateX(-60px)}
+.slide>*{max-width:1180px;margin-left:auto;margin-right:auto}
+.src{font-size:12px;color:var(--mut);margin-top:16px}
+.tag{font-size:14px;color:var(--mut);margin-bottom:6px}
+h1{font-size:clamp(26px,3.6vw,44px);line-height:1.12;letter-spacing:-.02em;margin-bottom:22px;max-width:1180px}
+h1 em{font-style:normal;color:var(--warn)}
+h3{font-size:16px;margin-bottom:10px}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.kpi b{display:block;font-size:clamp(34px,4.4vw,54px);line-height:1;letter-spacing:-.03em}
+.kpi span{display:block;font-weight:600;margin-top:8px}.kpi small{color:var(--mut);font-size:13px}
+.kpi.w b{color:var(--warn)}.kpi.a b{color:var(--acc)}
+.row{display:grid;grid-template-columns:minmax(110px,34%) 1fr 40px;gap:10px;align-items:center;margin:7px 0;font-size:14px}
+.tr{height:14px;background:var(--line);border-radius:3px;overflow:hidden}
+.tr i{display:block;height:100%;width:0;background:var(--acc);transition:width .9s cubic-bezier(.2,.7,.2,1) .25s}
+.on .tr i{width:var(--w)}
+.tr i.warn{background:var(--warn)}.tr i.amb{background:var(--amb)}
+.row b{text-align:right}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--soft);font-weight:600}tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto}
+.call{border-left:5px solid var(--warn);background:var(--hot);padding:12px 16px;border-radius:6px;margin-top:14px;font-size:15px}
+.call.ok{border-color:var(--acc);background:var(--soft)}
+.flow{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
+.flow .card{flex:1;min-width:140px;text-align:center}
+.flow .ar{align-self:center;font-size:13px;color:var(--mut);text-align:center;min-width:56px}
+ul{padding-left:20px;line-height:1.55;font-size:15px}li{margin:4px 0}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;background:var(--soft);font-size:12px;font-weight:600}.pill.w{background:var(--hot);color:var(--warn)}
+.cover{display:flex;flex-direction:column;justify-content:center}
+.cover h1{font-size:clamp(34px,6vw,76px);max-width:900px}
+.cover .meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:26px;color:var(--mut)}
+.cover .meta div b{display:block;color:var(--ink);font-size:18px}
+.bar{height:6px;width:90px;background:var(--acc);margin-bottom:26px;border-radius:3px}
+#nav{position:fixed;bottom:0;left:0;right:0;height:64px;padding-bottom:env(safe-area-inset-bottom,0px);display:flex;align-items:center;justify-content:space-between;padding-left:18px;padding-right:18px;background:var(--card);border-top:1px solid var(--line);z-index:20}
+#dots{display:flex;gap:9px;flex-wrap:wrap;justify-content:center}
+#dots button{width:12px;height:12px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0;transition:transform .2s,background .2s}
+#dots button.on{background:var(--acc);transform:scale(1.4)}
+.nb{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:14px}
+.nb:hover{border-color:var(--acc)}button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+#ctr{font-size:13px;color:var(--mut);margin:0 10px}
+@media (max-width:640px){#ctr{display:none}.row{grid-template-columns:100px 1fr 34px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<div id="prog"></div>
+
+<section class="slide cover"><div class="bar"></div>
+<h1>Recruitment Status Call</h1>
+<p style="font-size:20px;max-width:720px;line-height:1.4">26 live requisitions, 52 candidates in the pipeline and 4 offers to close. Today we decide what to resume, pause and escalate.</p>
+<div class="meta"><div><span>Date</span><b>Friday, 13 November 2026</b></div><div><span>Presenter</span><b>Talent Acquisition team</b></div><div><span>Sources</span><b>Requisitions, Monday.com, HubSpot</b></div></div></section>
+
+<section class="slide"><p class="tag">Executive snapshot</p>
+<h1>26 live requisitions, and <em>13 are ageing past 45 days</em></h1>
+<div class="grid g4">
+<div class="card kpi a"><b>16</b><span>Active (open) reqs</span><small>21 openings · 9 reqs already &gt;45d</small></div>
+<div class="card kpi"><b>8</b><span>On hold + paused</span><small>10 openings · 5 On Hold, 3 Paused</small></div>
+<div class="card kpi a"><b>22</b><span>Candidates under review</span><small>Largest stage of the 52-person pipeline</small></div>
+<div class="card kpi w"><b>13</b><span>Critical ageing &gt;45d</span><small>19 openings · 11 reqs are 100+ days old</small></div></div>
+<div class="grid g2" style="margin-top:16px">
+<div class="card"><h3>Live reqs by status (26)</h3><div class="bars" data-d="Open:16,On Hold:5,Paused:3,Upcoming:2" data-max="26"></div></div>
+<div class="card"><h3>Ageing of live reqs (days since requested)</h3><div class="bars" data-d="100+ days:11:warn,46–100 days:2:amb,31–45 days:4:amb,≤30 days:9" data-max="26"></div></div></div>
+<p class="src">Source: Recruitment Needs (Requisitions tab) and Monday.com tracker. Age = date requested to 13 Nov 2026. Under Review counts candidates, not reqs.</p></section>
+
+<section class="slide"><p class="tag">Recruiter stage updates</p>
+<h1>163 sourced in November, but <em>only 4 reach offer stage</em></h1>
+<div class="flow">
+<div class="card kpi"><b>163</b><span>Sourced</span><small>HubSpot profiles added</small></div><div class="ar">58%<br>→</div>
+<div class="card kpi"><b>94</b><span>Screened</span><small>Interview-stage records</small></div><div class="ar">67%<br>→</div>
+<div class="card kpi"><b>63</b><span>Interviewed</span><small>94 less 28 no-shows and 3 still scheduled</small></div><div class="ar">6%<br>→</div>
+<div class="card kpi w"><b>4</b><span>Offered</span><small>Monday offer stage (Offered tab lists 3)</small></div></div>
+<div class="tw" style="margin-top:16px"><table><tr><th>Recruiter</th><th>Sourced (Nov)</th><th>HubSpot interview records</th><th>Monday active pipeline</th><th>Offer stage</th></tr>
+<tr><td>Sudipa</td><td><b>54</b></td><td>–</td><td>8 (all Under Review)</td><td>0</td></tr>
+<tr><td>Harsha</td><td><b>36</b></td><td>22</td><td>16 (11 Under Review)</td><td>1</td></tr>
+<tr><td>Loga</td><td><b>30</b></td><td>30</td><td>13</td><td>2</td></tr>
+<tr><td>Lorie</td><td><b>23</b></td><td>5</td><td>2</td><td>0</td></tr>
+<tr><td>Karl</td><td><b>20</b></td><td>–</td><td>–</td><td>0</td></tr>
+<tr><td>Annie</td><td>–</td><td>27</td><td>13</td><td>1</td></tr>
+<tr><td>Unassigned</td><td>–</td><td>10 (all no-shows)</td><td>–</td><td>–</td></tr></table></div>
+<p class="src">Source: Update 13 Nov (“sourced for Nov”, “interviews for Nov”, “Active Pipeline – Recruiter”). Screened and Interviewed derived from Lead Status.</p></section>
+
+<section class="slide"><p class="tag">HubSpot November tracker</p>
+<h1><em>30% of interviews are no-shows</em>, and 17 wait in Annie Review</h1>
+<div class="grid g2">
+<div class="card"><h3>Sourced for Nov: 163 profiles by role</h3><div class="bars" data-d="Project Mgr (FL/CA/TN/MD):52,Project Coord.:47,Estimator:21,Renov. Mgr (4 cities):17,Kennebunkport ME:14,Asst Project Mgr:11,Other:1" data-max="52"></div></div>
+<div class="card"><h3>Interviews for Nov: 94 candidates by outcome</h3><div class="bars" data-d="Rejected:31,No-show (1st + 2nd):28:warn,Annie Review:17:amb,2nd / 3rd round:10,Scheduled:3,Keep / Future / Withdrawn:5" data-max="31"></div></div></div>
+<div class="call"><b>Bottleneck 1 · No-shows.</b> 28 of 94 lost before screening; 10 have no owner.</div>
+<div class="call"><b>Bottleneck 2 · Annie Review.</b> 17 (18%) waiting: Annie 7, Harsha 7, Loga 3.</div>
+<div class="call"><b>Bottleneck 3 · Progression.</b> Only 10 of 94 (11%) reach 2nd/3rd round, which is 6% of 163 sourced.</div>
+<p class="src">Source: Update 13 Nov HubSpot tabs. Role labels grouped (39 raw labels in source).</p></section>
+
+<section class="slide"><p class="tag">Active pipeline · priority tracks</p>
+<h1><em>4 offers pending</em>: close Corona, Boston and Sr. Accountant first</h1>
+<div class="grid g2" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)">
+<div class="tw"><table><tr><th>Priority track</th><th>Status</th><th>Next move</th></tr>
+<tr><td><b>Corona, CA</b> · REQ-044 ×2</td><td><span class="pill">2 Offer</span></td><td>Leonardo and Andrii: offers to go out</td></tr>
+<tr><td><b>Boston, MA</b> · REQ-051</td><td><span class="pill">1 Offer</span></td><td>Benoit joins 30 Nov; Staton yet to meet Ed</td></tr>
+<tr><td><b>Sr. Accountant</b></td><td><span class="pill">1 Offer</span></td><td>Dyron Dixon: confirm offer and DOJ</td></tr>
+<tr><td><b>Chevy Chase, MD</b> · REQ-050</td><td>4 × L2</td><td>Maloy, Jhonny, Jeffrey, Andres scheduled</td></tr>
+<tr><td><b>Baltimore, MD</b> · REQ-066</td><td>L3</td><td>Alexander Jacobson: scheduling 3rd</td></tr>
+<tr><td><b>Encinitas / San Diego</b></td><td>L3 / PA</td><td>Mariia L3 with Ed 20 Nov; Allan feedback</td></tr>
+<tr><td><b>Project Coord.</b> · REQ-054</td><td>L3</td><td>Megha: Sergio feedback awaited</td></tr></table></div>
+<div class="card"><h3>Monday pipeline by status (52)</h3><div class="bars" data-d="Under Review:22:amb,Scheduling 2nd:8,2nd Int. Sched.:4,Awaiting Feedback:4,Offer Stage:4:warn,Sched. 3rd / Followed-up:4,On-Hold / PA / Rej.:5" data-max="22"></div></div></div>
+<p class="src">Source: Active Pipeline role/recruiter tabs, Monday tracker, Requisitions notes. Leonardo’s L3 feedback flagged a conflict-of-interest risk.</p></section>
+
+<section class="slide"><p class="tag">Hold and paused pipelines</p>
+<h1>8 roles paused, and <em>11 candidates still sit against them</em></h1>
+<div class="tw"><table><tr><th>Req</th><th>Location · openings</th><th>Why paused</th><th>Decision needed today</th></tr>
+<tr><td>REQ-049 · 172d</td><td>Atlanta, GA · 1</td><td>On Hold; 6 Atlanta candidates active</td><td>Resume or stop Sky House interviews?</td></tr>
+<tr><td>REQ-051 · 151d</td><td>Boston, MA · 2</td><td>Paused; Benoit joining 30 Nov</td><td>Reduce to 1 opening; meet Staton?</td></tr>
+<tr><td>REQ-052 · 85d</td><td>Little Rock, AR · 1</td><td>Ed asked to pause (8 Oct)</td><td>Close or keep paused?</td></tr>
+<tr><td>REQ-059 · 45d</td><td>Memphis, TN · 1</td><td>Can wait until Q1 2027</td><td>Stop 3 live candidates?</td></tr>
+<tr><td>REQ-063 · 23d</td><td>Manhattan, NY · 1</td><td>“Subs need”</td><td>Hold Rivera L2 feedback?</td></tr>
+<tr><td>REQ-063 · 32d</td><td>Renov. Ops Coord. · 1</td><td>Paused (300 applicants)</td><td>Reopen or close?</td></tr>
+<tr><td>REQ-048 · 109d</td><td>Gainesville, FL · 2</td><td>Requester Kledian left</td><td>Reassign requester or close</td></tr>
+<tr><td>REQ-062 · 42d</td><td>Orlando, FL · 1</td><td>On Hold; 40+42 shortlisted</td><td>Release to sourcing?</td></tr></table></div>
+<div class="call"><b>Status mismatch:</b> REQ-047 Jacksonville and REQ-056 Nashville show “Open” but notes say On Hold. Nashville has 3 candidates in motion: confirm and update status today.</div>
+<p class="src">Source: Requisitions tab (status, notes, HR notes) and Active Pipeline. 11 candidates = Atlanta 6, Memphis 3, Manhattan 1, Boston 1.</p></section>
+
+<section class="slide"><p class="tag">Ageing and under-review bottlenecks</p>
+<h1>Under-review pipeline is stalling: <em>22 candidates, 11 waiting 7+ days</em></h1>
+<div class="grid g2">
+<div class="card"><h3>Escalation ladder: requisition ageing</h3>
+<p style="margin:8px 0"><span class="pill w">100+ days · 11 reqs</span><br>REQ-046 and 047 (256d), 045 (227d), 049, 053, 054, 044, 051, 055, 050, 048</p>
+<p style="margin:8px 0"><span class="pill">46–100 days · 2 reqs</span><br>REQ-052 (85d), REQ-056 (58d)</p>
+<p style="margin:8px 0"><span class="pill">31–45 days · 4 reqs</span><br>REQ-059, 060 (45d), 062 (42d), 063 Ops (32d)</p>
+<div class="call"><b>Escalate to Ed:</b> the oldest reqs (046, 047, 045) still have candidates but no decision; 4 of the 13 are also paused.</div></div>
+<div class="card"><h3>Under review by role (22)</h3><div class="bars" data-d="Project Coord.:9:amb,Estimator:5,Asst Project Mgr:4,Kennebunkport RM:2,Memphis / Encinitas:2" data-max="9"></div>
+<h3 style="margin-top:14px">Oldest waiting (days since HR interview)</h3>
+<ul><li>Rishav Raj (APM) <b>16d</b> · Devendra Jagtap (APM) <b>14d</b></li><li>Collier I. 11d · Zazhe Roxas 10d (both PC)</li><li>Jose, Avinash, Rohan (Estimators) 8d</li></ul></div></div>
+<p class="src">Source: Requisitions tab (Date Requested) and Monday tracker (Interview Date, Current Status = Under Review) as of 13 Nov 2026.</p></section>
+
+<section class="slide"><p class="tag">Monday.com governance</p>
+<h1><em>Boards are out of sync</em>: fix before the next weekly update</h1>
+<div class="grid g2">
+<div class="card"><h3>Sync gaps and data quality</h3><ul>
+<li><b>Duplicate req IDs:</b> REQ-063, 065, 066 used twice; 043–046 reused across old and new roles; typo “1`” in REQ-068.</li>
+<li><b>Offer count:</b> Monday shows 4; Offered tab lists 3 (Leonardo and Andrii missing; Guenevere De Leon not on tracker).</li>
+<li><b>Status vs. notes:</b> REQ-047 and 056 “Open” but noted On Hold.</li>
+<li><b>Ownership:</b> 10 HubSpot interviews have no recruiter owner.</li>
+<li><b>Blank fields:</b> PM feedback empty on all 22 Under Review; Final Decision/Date empty; PA status “WIP” on most rows.</li>
+<li><b>Data quality:</b> Mark Bailey tagged Memphis vs resume TN; 39 role-label variants in HubSpot.</li></ul></div>
+<div class="card"><h3>Immediate actions</h3><div class="tw"><table><tr><th>Action</th><th>Owner</th></tr>
+<tr><td>Schedule L2 for Steve Pesantez (travels 14 Nov–7 Dec)</td><td>Karl</td></tr>
+<tr><td>Set Bilal Shaikh call Tue 1:30pm; 30-min call for Jay Sawarkar</td><td>Karl</td></tr>
+<tr><td>2nd/short calls: Mrunali, Saikrishna (Estimators)</td><td>Karl / Swathi</td></tr>
+<tr><td>Clear 17 Annie-Review backlog</td><td>Annie, Harsha, Loga</td></tr>
+<tr><td>Reconcile req IDs, hold statuses, Offered tab</td><td>Loga / Annie</td></tr>
+<tr><td>Assign owner to 10 no-show records; daily HubSpot↔Monday sync</td><td>Karl</td></tr></table></div></div></div>
+<p class="src">Source: Monday tracker, Requisitions tab, Update 13 Nov. Owners per “Tasks &amp; Responsibilities”: confirm on call.</p></section>
+
+<section class="slide"><p class="tag">Wrap-up and next steps</p>
+<h1>Next steps: who owns what, and by when</h1>
+<div class="tw"><table><tr><th>Next step</th><th>Owner</th><th>Deadline</th></tr>
+<tr><td>Make leadership calls on 8 paused roles and 11 candidates against them</td><td>Ed / Leadership</td><td>Today</td></tr>
+<tr><td>Confirm and update REQ-047 and REQ-056 status</td><td>Loga / Annie</td><td>Today</td></tr>
+<tr><td>Send Corona offers (Leonardo, Andrii); confirm Sr. Accountant offer and DOJ</td><td>Recruiting team</td><td>Proposed: this week</td></tr>
+<tr><td>Clear 17 Annie-Review backlog</td><td>Annie, Harsha, Loga</td><td>Before next weekly update</td></tr>
+<tr><td>Schedule Steve Pesantez L2; Bilal Shaikh call Tue 1:30pm</td><td>Karl</td><td>Steve: before 14 Nov travel; Bilal: Tue</td></tr>
+<tr><td>Assign owners to 10 no-show records; start daily HubSpot↔Monday sync</td><td>Karl</td><td>Before next weekly update</td></tr>
+<tr><td>Reconcile duplicate req IDs and Offered tab</td><td>Loga / Annie</td><td>Before next weekly update</td></tr>
+<tr><td>Mariia L3 with Ed; Benoit joins Boston</td><td>Recruiting / Ed</td><td>20 Nov; 30 Nov</td></tr></table></div>
+<div class="call ok"><b>Goal for next call:</b> offers closed, no-show rate below 30%, and the Under-Review queue cleared. Deadlines marked “Proposed” are suggestions: confirm on the call.</div></section>
+
+<div id="nav"><button class="nb" id="prev" aria-label="Previous slide">← Prev</button><div style="display:flex;align-items:center"><div id="dots"></div><span id="ctr"></span></div><div><button class="nb" id="next" aria-label="Next slide">Next →</button> <button class="nb" id="fs" aria-label="Toggle fullscreen">⛶ Fullscreen</button></div></div>
+
+<script>
+(function(){
+var S=[].slice.call(document.querySelectorAll('.slide')),i=0,D=document.getElementById('dots');
+document.querySelectorAll('.bars').forEach(function(b){
+ var rows=b.dataset.d.split(','),mx=+b.dataset.max||0;
+ var p=rows.map(function(r){var a=r.split(':');return{l:a[0],v:+a[1],c:a[2]||''}});
+ if(!mx)mx=Math.max.apply(null,p.map(function(x){return x.v}));
+ b.innerHTML=p.map(function(x){return '<div class="row"><span>'+x.l+'</span><div class="tr"><i class="'+x.c+'" style="--w:'+(x.v/mx*100)+'%"></i></div><b>'+x.v+'</b></div>'}).join('');
+});
+S.forEach(function(s,n){var d=document.createElement('button');d.setAttribute('aria-label','Go to slide '+(n+1));d.onclick=function(){go(n)};D.appendChild(d)});
+function go(n){n=Math.max(0,Math.min(S.length-1,n));i=n;
+ S.forEach(function(s,k){s.classList.toggle('on',k===n);s.classList.toggle('past',k<n)});
+ [].forEach.call(D.children,function(d,k){d.classList.toggle('on',k===n)});
+ document.getElementById('prog').style.width=((n+1)/S.length*100)+'%';
+ document.getElementById('ctr').textContent=(n+1)+' / '+S.length;
+ S[n].scrollTop=0;try{history.replaceState(null,'','#s'+(n+1))}catch(e){}}
+function fs(){try{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen()}catch(e){}}
+document.getElementById('prev').onclick=function(){go(i-1)};
+document.getElementById('next').onclick=function(){go(i+1)};
+document.getElementById('fs').onclick=fs;
+document.addEventListener('keydown',function(e){
+ if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(i+1)}
+ else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+ else if(e.key==='Home')go(0);else if(e.key==='End')go(S.length-1);
+ else if(e.key==='f'||e.key==='F')fs()});
+var tx=0;document.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>70)go(i+(d<0?1:-1))},{passive:true});
+var h=parseInt((location.hash||'').replace('#s',''),10);go(h?h-1:0);
+})();
+</script></body></html>
